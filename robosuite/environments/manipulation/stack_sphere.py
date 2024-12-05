@@ -321,6 +321,7 @@ class StackSphere(ManipulationEnv):
             size_min=[0.020, 0.020, 0.020],  # [0.015, 0.015, 0.015],
             size_max=[0.022, 0.022, 0.022],  # [0.018, 0.018, 0.018])
             rgba=[1, 0, 0, 1],
+            friction=[1.0, 1, 1],
             # friction=[.95, 10.3,10.1],
             #material=redwood,
         )
@@ -329,13 +330,15 @@ class StackSphere(ManipulationEnv):
             size_min=[0.020, 0.020, 0.020],  # [0.015, 0.015, 0.015],
             size_max=[0.022, 0.022, 0.022],  # [0.018, 0.018, 0.018])
             rgba=[1, 0, 1, 1],
+            friction=[1.0, 5e-3, 0.5],
            # material=redwood,
         )
         self.cylinder = CylinderObject(
             name="cylinder",
-            size_min=[0.020*1.5, 0.020*1.5, 0.020],  # [0.015, 0.015, 0.015],
-            size_max=[0.022*1.5, 0.022*1.5, 0.022],  # [0.018, 0.018, 0.018])
+            size_min=[0.020, 0.020, 0.020],  # [0.015, 0.015, 0.015],
+            size_max=[0.022, 0.022, 0.022],  # [0.018, 0.018, 0.018])
             rgba=[0, 0, 1, 1],
+            friction=[1.0, 1, 1],
             #material=redwood,
         )
         # breakpoint()

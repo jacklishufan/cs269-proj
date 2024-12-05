@@ -89,9 +89,9 @@ def get_object_pos_and_quats(env):
     target_pos_cylinder = obs['cylinder_pos'] #+ np.array([0.0,0,0.1])
     obj_angle_cylinder = quat_to_euler(obs['cylinder_quat'])   / np.pi  * 180
     return [
-        ("box1",target_pos_cube,obj_angle_cube,np.array(env.cube.size)),
-        ("box2",target_pos_sphere,obj_angle_sphere,np.array(env.sphere.size)),
-        ("box3",target_pos_cylinder,obj_angle_cylinder,np.array(env.cylinder.size))
+        ("cube",target_pos_cube,obj_angle_cube,np.array(env.cube.size)),
+        ("sphere",target_pos_sphere,obj_angle_sphere,np.array(env.sphere.size)),
+        ("cylinder",target_pos_cylinder,obj_angle_cylinder,np.array(env.cylinder.size))
     ]
     
 def get_object_pos_and_quats_by_name(env,name):
@@ -402,7 +402,9 @@ if __name__ == "__main__":
     # sort by size
     all_objs = sorted(all_objs,key=lambda x:x[-1][0],reverse=True)
     obj_names = list([x[0] for x in all_objs])
-    for obj_name in obj_names:
+    for obj_name in obj_names[::-1]:
+        if obj_name == 'sphere':
+            continue
         _,target_pos,target_euler,curr_size = get_object_pos_and_quats_by_name(env,obj_name)
         
         target_euler = fix_eular(target_euler)
